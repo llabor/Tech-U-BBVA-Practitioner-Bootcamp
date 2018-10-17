@@ -1,0 +1,25 @@
+<!-- Load the Polymer.Element base class -->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="productos-page">
+  <!-- Defines the element's style and local DOM -->
+  <template>
+    <style>
+      :host {
+        display: block;
+
+        padding: 16px;
+      }
+    </style>
+
+    <h1>Productos Page</h1>
+  </template>
+  <script>
+    // Your new element extends the Polymer.Element base class
+    class ProductosPage extends Polymer.Element {
+      static get is() { return 'productos-page'; }
+    }
+    //Register your new custom element so the browser can use it
+    customElements.define(ProductosPage.is, ProductosPage);
+  </script>
+</dom-module>

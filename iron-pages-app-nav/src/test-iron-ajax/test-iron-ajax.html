@@ -1,0 +1,35 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+
+<dom-module id="test-iron-ajax">
+    <template>
+        <style>
+          :host {
+            display: block;
+          }
+        </style>
+        <iron-ajax
+            auto
+            url="http://jsonplaceholder.typicode.com/posts/"
+            last-response="{{posts}}"
+            handle-as="json">
+        </iron-ajax>
+
+        <iron-list items="{{posts}}" as="post">
+            <template>
+                <div class="item">
+                    <b>#{{index}} - {{post.title}}</b>
+                    <p>{{post.body}}</p>
+                </div>
+            </template>
+        </iron-list>
+    </template>
+    <script>
+      class TestIronAjax extends Polymer.Element {
+        static get is() { return 'test-iron-ajax'; }
+      }
+
+      customElements.define(TestIronAjax.is, TestIronAjax);
+  </script>
+</dom-module>

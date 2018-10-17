@@ -1,0 +1,43 @@
+<!-- Load the Polymer.Element base class -->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="usuarios-page">
+  <!-- Defines the element's style and local DOM -->
+  <template>
+    <style>
+      :host {
+        display: block;
+
+        padding: 16px;
+      }
+    </style>
+
+    <h1>Usuarios Page</h1>
+    <br>
+        <template is="dom-repeat" items="{{users}}" as="user">
+            <div>First name: <span>{{user.first}}</span></div>
+            <div>Last name: <span>{{user.last}}</span></div>
+            <p></p>
+        </template>
+  </template>
+  <script>
+    // Your new element extends the Polymer.Element base class
+    class UsuariosPage extends Polymer.Element {
+      static get is() { return 'usuarios-page'; }
+    /* para inicializar los datos utilizamos el constructor de ES6, así tendremos
+     los datos disponibles en la template antes de que sea renderizada
+     y los usuarios serán mostrados correctamente.*/
+      constructor() {
+              super();
+              this.users = [
+                    {first: 'Bob', last: 'Li'},
+                    {first: 'Ayesha', last: 'Johnson'},
+                    {first: 'Fatma', last: 'Kumari'},
+                    {first: 'Tony', last: 'Morelli'}
+              ]
+      }
+    }
+    //Register your new custom element so the browser can use it
+    customElements.define(UsuariosPage.is, UsuariosPage);
+  </script>
+</dom-module>

@@ -1,0 +1,7 @@
+{
+  "name": "iron-pages-app",
+  "short_name": "iron-pages-app",
+  "description": "Ejemplo completo de navegación por secciones y rutas de aplicación",
+  "start_url": "/",
+  "display": "standalone"
+}

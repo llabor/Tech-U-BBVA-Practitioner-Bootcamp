@@ -1,0 +1,98 @@
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<!-- bower install -save PolymerElements/app-route -->
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+
+<link rel="import" href="../pages/productos-page.html">
+<link rel="import" href="../pages/usuarios-page.html">
+<link rel="import" href="../pages/contacto-page.html">
+<link rel="import" href="../pages/view404-page.html">
+
+<dom-module id="link-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      nav {
+          background-color: #FF5733;
+          padding: 10px;
+      }
+      ul {
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+      }
+      li {
+          display: inline-block;
+          margin-left: 15px;
+        }
+      li a { color: #fff; text-decoration: none;}
+      li a:hover { font-weight: bold; }
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route id="router-principal"
+      route="{{route}}"
+      pattern="/:page"
+      data="{{data}}"
+      tail="{{subroute}}">
+    </app-route>
+ <!--
+ route: Es el objeto de la ruta, que nos ha generado el app-location.
+ pattern: Es el patrón buscado en la ruta. Si lo que hay escrito en la barra de direcciones concuerda con este pattern, entonces app-route descompondrá esa URL en varios pedazos.
+ data: Todos los datos que se ajusten a la definición del patrón, se guardarán en el objeto data. Nuestro patrón se definió como "/:page", lo que quiere decir que el segmento que hay detrás de la raíz de la aplicación se meterá en el objeto "data" con el atributo "page".
+ tail: Es todo lo que no se ha reconocido en el patrón anterior. Todo aquello que sobró, se coloca dentro del objeto tail, el cual nos vendrá muy bien para hacer rutas profundas de aplicaciones, pero que no vamos a analizar todavía en este artículo.
+ Nota: En este caso el patrón era "/:page", que solo tiene un segmento, pero podría ser más complejo. Casando este patrón el objeto data tendrá una única propiedad llamada "page", pero si el patrón fuese algo como "/:page/:id" entonces al detectarse el patrón el objeto "data" se producirá con dos propiedades, "page" e "id".
+ -->
+    <nav>
+      <ul>
+        <li>
+          <a href="/productos/">Productos</a>
+        </li>
+        <li>
+          <a href="/usuarios/">Usuarios</a>
+        </li>
+        <li>
+          <a href="/contacto/">Contacto</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <iron-pages selected="[[data.page]]"
+                attr-for-selected="name"
+                fallback-selection="view404">
+      <productos-page name="productos"></productos-page>
+      <usuarios-page name="usuarios"></usuarios-page>
+      <contacto-page name="contacto"></contacto-page>
+      <view404-page name="view404"></view404-page>
+    </iron-pages>
+    <!--
+    <p>
+      [[data.page]]
+    </p>  -->
+
+  </template>
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class LinkApp extends Polymer.Element {
+      static get is() { return 'link-app'; }
+      static get properties() {
+        return {
+        };
+      }
+      /*
+      ready() {
+        super.ready();
+        console.log('Ejecutándose ready');
+        this.set('route.path', '/productos/');
+      } */
+    }
+
+    window.customElements.define(LinkApp.is, LinkApp);
+  </script>
+</dom-module>
