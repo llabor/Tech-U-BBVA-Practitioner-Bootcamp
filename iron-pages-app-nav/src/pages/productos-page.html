@@ -1,5 +1,6 @@
 <!-- Load the Polymer.Element base class -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="contacto-page.html">
 
 <dom-module id="productos-page">
   <!-- Defines the element's style and local DOM -->
@@ -13,11 +14,26 @@
     </style>
 
     <h1>Productos Page</h1>
+    <button on-click="mostrarContactoComponent">Ver / Ocultar Contacto</button>
+    <div hidden$="[[oculto]]">
+      <contacto-page></contacto-page>
+    </div>
   </template>
   <script>
     // Your new element extends the Polymer.Element base class
     class ProductosPage extends Polymer.Element {
       static get is() { return 'productos-page'; }
+      static get properties() {
+      return {
+          oculto: {
+            type: Boolean,
+            value: true
+          }
+        }
+      }
+      mostrarContactoComponent(){
+        this.oculto = !this.oculto;
+      }
     }
     //Register your new custom element so the browser can use it
     customElements.define(ProductosPage.is, ProductosPage);

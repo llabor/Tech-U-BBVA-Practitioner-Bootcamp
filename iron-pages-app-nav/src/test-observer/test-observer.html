@@ -1,0 +1,58 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="test-observer">
+    <template>
+        <style>
+          :host {
+            display: block;
+            font-family: sans-serif;
+            padding: 18px;
+          }
+        </style>
+
+        <label for="email">Type an email to validate it:</label>
+        <input type="text" name="email" placeholder="type email..." value="{{email::input}}">
+        <iron-icon icon="[[icono]]">
+
+    </template>
+
+    <script>
+      class TestObserver extends Polymer.Element {
+        static get is() { return 'test-observer'; }
+
+        static get properties() {
+        return {
+          email: {
+            type: String,
+            observer: 'comprobarEmail'
+          },
+          icono: {
+            type: String,
+            value: "icons:clear"
+          }
+        };
+      }
+
+      constructor() {
+        super();
+      }
+
+      comprobarEmail(email,e2, e3) {
+        if(this.validateEmail(email)) {
+          this.icono = 'icons:check-circle';
+        } else {
+          this.icono = 'icons:clear';
+        }
+      }
+
+      validateEmail(email) {
+          var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+      }
+    }
+
+      customElements.define(TestObserver.is, TestObserver);
+  </script>
+</dom-module>
