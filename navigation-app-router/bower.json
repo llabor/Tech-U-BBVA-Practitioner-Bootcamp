@@ -1,0 +1,14 @@
+{
+  "name": "router-app",
+  "description": "Rutas con Polymer utilizando App Router",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "app-router": "^2.7.2",
+    "iron-menu-behavior": "^2.1.1"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  }
+}

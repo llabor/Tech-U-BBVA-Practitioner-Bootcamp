@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>App Router</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta name="description" content="Rutas con Polymer utilizando App Router">
+    <link rel="manifest" href="/manifest.json">
+
+    <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <link rel="import" href="nav-bar-app.html">
+    <link rel="import" href="bower_components/app-router/app-router.html">
+
+
+    <style is="custom-style">
+       nav-bar-app{
+           display: inline-block;
+           width: 100%;
+       }
+       nav-bar-app a {
+           display: block;
+       }
+       nav-bar-app a {
+           padding: 15px 20px;
+           color: var(--primary-text-color);
+           text-decoration: none;
+       }
+       nav-bar-app a[disabled] {
+           color: var(--google-grey-300);
+       }
+       .horizontal-section {
+           padding: 0;
+           margin-bottom: 20px;
+       }
+       .row {
+           height: 120px;
+       }
+   </style>
+  </head>
+  <body>
+    <nav-bar-app selected="0">
+      <a href="#/home" role="menuitem">Home</a>
+      <a href="#/customer" role="menuitem">Customer</a>
+      <a href="#/order/1" role="menuitem">Order 1</a>
+    </nav-bar-app>
+
+    <app-router>
+      <!-- matches an exact path -->
+      <app-route path="/"></app-route>
+      <app-route path="/home" import="/pages/home-page.html"></app-route>
+      <app-route path="/customer" import="/pages/customer-page.html"></app-route>
+
+      <!-- matches using a wildcard
+      <app-route path="/customer/:customerId" import="/pages/customer-page.html"></app-route>-->
+
+      <!-- matches using a path variable -->
+      <app-route path="/order/:id" import="/pages/order-page.html"></app-route>
+
+      <!-- matches everything else -->
+      <app-route path="*" import="/pages/page-not-found.html"></app-route>
+    </app-router>
+  </body>
+</html>

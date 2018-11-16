@@ -1,0 +1,7 @@
+{
+  "name": "router-app",
+  "short_name": "router-app",
+  "description": "Rutas con Polymer utilizando App Router",
+  "start_url": "/",
+  "display": "standalone"
+}

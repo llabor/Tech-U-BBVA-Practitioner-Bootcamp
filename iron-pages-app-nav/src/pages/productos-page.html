@@ -8,13 +8,13 @@
     <style>
       :host {
         display: block;
-
         padding: 16px;
       }
     </style>
 
     <h1>Productos Page</h1>
     <button on-click="mostrarContactoComponent">Ver / Ocultar Contacto</button>
+    <!--El símbolo $ es porque hacemos un bindeo a un atributo (HTML) y no a una propiedad (JS) -->
     <div hidden$="[[oculto]]">
       <contacto-page></contacto-page>
     </div>

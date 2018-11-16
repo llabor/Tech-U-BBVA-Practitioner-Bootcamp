@@ -1,0 +1,35 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/iron-menu-behavior/iron-menubar-behavior.html">
+
+<dom-module id="nav-bar-app">
+  <template>
+      <style>
+          .content ::content > .iron-selected {
+              color: black;
+              background-color: var(--google-red-500);
+          }
+          .content ::content > * {
+              display: inline-block;
+          }
+      </style>
+
+      <div class="content">
+          <content></content>
+      </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class NavBarApp extends Polymer.Element {
+        static get is() { return 'nav-bar-app'; }
+        behaviors: [
+            Polymer.IronMenubarBehavior
+        ]
+      }
+
+    window.customElements.define(NavBarApp.is, NavBarApp);
+  </script>
+</dom-module>

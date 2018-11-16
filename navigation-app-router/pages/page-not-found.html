@@ -1,0 +1,30 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="page-not-found">
+  <template>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+      :host {
+        display: block;
+      }
+
+    </style>
+    <h1>HTTP 404</h1>
+    <h2>Página no encontrada</h2>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class PageNotFound extends Polymer.Element {
+      static get is() { return 'page-not-found'; }
+      static get properties() {
+        return {
+        };
+      }
+    }
+    window.customElements.define(PageNotFound.is, PageNotFound);
+  </script>
+</dom-module>
