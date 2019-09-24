@@ -7,16 +7,14 @@ function guardarEnLocalStorage() {
 
   localStorage.setItem(clave, valor);
 
-  var valor = {
-    "nombre":"Ezequiel",
-    "apellidos":"Llarena Borges",
-    "ciudad":"Madrid",
-    "pais":"España"
+  var objeto = {
+    nombre:"Ezequiel",
+    apellidos:"Llarena Borges",
+    ciudad:"Madrid",
+    pais:"España"
   };
 
-  localStorage.setItem("json", JSON.stringify(valor));
-
-
+  localStorage.setItem("json", JSON.stringify(objeto));
 }
 
 function leerDeLocalStorage() {
