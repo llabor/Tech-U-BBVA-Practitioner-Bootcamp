@@ -1,1 +1,1 @@
-# Tech-U-BBVA-Practitioner-Bootcamp
+# Tech-Practitioner-Bootcamp
